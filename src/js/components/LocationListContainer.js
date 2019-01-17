@@ -55,24 +55,18 @@ class LocationListContainer extends Component {
   }
 
   getNavigation() {
-    let pageCount = this.getPageCount();
-    let disabled = this.state.page === 0;
-    if (!disabled) {
-      let navigationBoth = (
-        <div className="wrapper">
-          <button onClick={this.onPageDecrement.bind(this)}>Previous</button>
-          <button onClick={this.onPageIncrement.bind(this)}>Next</button>
-        </div>
-      );
-      return navigationBoth;
-    } else {
-      let navigationNext = (
-        <div className="wrapper">
-          <button onClick={this.onPageIncrement.bind(this)}>Next</button>
-        </div>
-      );
-      return navigationNext;
-    }
+    const disabled = this.state.page === 0;
+    let navigation = !disabled ? (
+      <div className="wrapper">
+        <button onClick={this.onPageDecrement.bind(this)}>Previous</button>
+        <button onClick={this.onPageIncrement.bind(this)}>Next</button>
+      </div>
+    ) : (
+      <div className="wrapper">
+        <button onClick={this.onPageIncrement.bind(this)}>Next</button>
+      </div>
+    );
+    return navigation;
   }
 
   onPageDecrement() {
